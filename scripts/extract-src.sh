@@ -53,9 +53,6 @@ sed -i 's|sqliteServerEnabled: true|sqliteServerEnabled: false|g' renderer/prelo
 # fix for issue #63 of notion-repackaged
 sed -i 's|error.message.indexOf("/opt/notion-app/app.asar") !== -1|process.platform === "linux"|g' main/autoUpdater.js
 
-# fix for issue #46 of notion-repackaged
-patch -p0 --binary < "${WORKSPACE_DIR}/patches/no-sandbox-flag.patch"
-
 find . -type f -name "*.js.map" -exec rm {} +
 
 log "Adapting package.json including fixes..."
